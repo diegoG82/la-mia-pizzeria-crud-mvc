@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "_MioLayout";
+}
+
+
+
+ <main>
+        <h1 class="text-center mt-2 mb-4">WELCOME TO KAWAII PIZZA </h1>
+
+        <div class="container-fluid mainpage mt-4 ">
+
+            <div class="mainpage mt-4 mb-4 text-center"> <img class="mainimg" src="\img\kawaiii.jpg" /></div>
+
+        </div>
+
+
+        <h1 class="text-center mt-2 mb-4">OUR BEST PIZZAS: </h1>
+
+    @section Button{
+        <div class="btn_container">
+
+         <button class="btn btn-danger " onclick="showPopup()">ORDER A PIZZA</button>
+
+        </div>
+    
+
+        <script>
+            function showPopup() {
+
+                const popup = window.open("", "Popup", "width=500,height=300");
+
+
+                popup.document.body.innerHTML = "ありがとう!!!";
+            }
+
+
+            const button = document.querySelector("button");
+            button.addEventListener("click", showPopup);
+
+        </script>
+
+    }
+   
+   
+      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\1.jpg" alt="Pizza1" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 1</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\2.jpg" alt="Pizza2" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 2</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\3.jpg" alt="Pizza3" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 3</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\4.jpg" alt="Pizza4" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 4</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\5.jpg" alt="Pizza5" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 5</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\6.jpeg" alt="Pizza6" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 6</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="\img\7.jpeg" alt="Pizza7" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 9</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="\img\8.jpeg" alt="Pizza8" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 8</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="\img\9.jpeg" alt="Pizza9" />
+                        <div class="container text-center mt-4">
+                            <h4><b>PIZZA 9</b></h4>
+                            <p>PIZZA TEXT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+</main>
+
+
+
+
+
