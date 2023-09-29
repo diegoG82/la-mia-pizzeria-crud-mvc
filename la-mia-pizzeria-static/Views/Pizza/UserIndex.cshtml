@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "_MioLayout";
+}
+
+@model List<Pizza>
+
+<main>
+    <h1 class="text-center mt-2 mb-4">WELCOME TO KAWAII PIZZA </h1>
+
+    <div class="container-fluid mainpage mt-4 ">
+
+        <div class="mainpage mt-4 mb-4 text-center"> <img class="mainimg" src="\img\kawaiii.jpg" /></div>
+
+    </div>
+
+
+    <h1 class="text-center mt-2 mb-4">OUR BEST PIZZAS: </h1>
+
+    @section Button{
+        <div class="btn_container">
+
+            <button class="btn btn-danger " onclick="showPopup()">ORDER A PIZZA</button>
+
+        </div>
+
+
+        <script>
+            function showPopup() {
+
+                const popup = window.open("", "Popup", "width=500,height=300");
+
+
+                popup.document.body.innerHTML = "ありがとう!!!";
+            }
+
+
+            const button = document.querySelector("button");
+            button.addEventListener("click", showPopup);
+
+        </script>
+
+    }
+
+
+
+    <div class="container">
+        <div class="row">
+            @foreach (Pizza pizza in Model)
+            {
+                <div class="col-sm-4">
+                    <div class="card mb-4">
+                        <img src="@pizza.Image" alt="Pizza1" />
+                        <div class="container text-center mt-4">
+
+                            <h4>@pizza.Name</h4>
+                            <p>@pizza.Description</p>
+                            <p>@pizza.Price yen</p>
+                            <a class="btn btn-danger" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">Details
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            
+    </div>
+
+
+
+</main>
