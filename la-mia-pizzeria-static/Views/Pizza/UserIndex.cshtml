@@ -5,7 +5,8 @@
 @model List<Pizza>
 
 <main>
-    <h1 class="text-center mt-2 mb-4">WELCOME TO KAWAII PIZZA </h1>
+    <div class="title mt-4"><h1 class="text-center  mt-2 mb-4">WELCOME TO KAWAII PIZZA </h1></div>
+    
 
     <div class="container-fluid mainpage mt-4 ">
 
@@ -13,35 +14,37 @@
 
     </div>
 
-
-    <h1 class="text-center mt-2 mb-4">OUR BEST PIZZAS: </h1>
+    <div class="title mb-4"><h1 class="text-center mt-2 mb-4">OUR BEST PIZZAS:</h1></div>
+  
 
     @section Button{
         <div class="btn_container">
 
-            <button class="btn btn-danger " onclick="showPopup()">ORDER A PIZZA</button>
+            <button class="btn btn-danger " onclick="showPopup()">ORDER A PIZZA!!!</button>
 
         </div>
 
 
         <script>
             function showPopup() {
+                const popup = window.open("", "Popup", "width=800,height=600");
 
-                const popup = window.open("", "Popup", "width=500,height=300");
+                const img = document.createElement("img");
+                img.src = "https://www.bing.com/images/blob?bcid=RDBcFF-QQCIGqxcxoNWLuD9SqbotqVTdP6k";
+                img.style.width = "800px";
+                img.style.height = "600px";
+                img.style.position = "absolute";
+                img.style.top = "50%";
+                img.style.left = "50%";
+                img.style.transform = "translate(-50%, -50%)";
 
-
-                popup.document.body.innerHTML = "ありがとう!!!";
+                popup.document.body.appendChild(img);
             }
 
-
-            const button = document.querySelector("button");
-            button.addEventListener("click", showPopup);
 
         </script>
 
     }
-
-
 
     <div class="container">
         <div class="row">
@@ -52,10 +55,10 @@
                         <img src="@pizza.Image" alt="Pizza1" />
                         <div class="container text-center mt-4">
 
-                            <h4>@pizza.Name</h4>
-                            <p>@pizza.Description</p>
-                            <p>@pizza.Price yen</p>
-                            <a class="btn btn-danger" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">Details
+                            <h3> <strong>@pizza.Name</strong></h3>
+                            <p> <strong>@pizza.Description</strong>n</p>
+                            <p> <strong>@pizza.Price yen</strong></p>
+                            <a class="btn btn-danger" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">DETAILS
                             </a>
 
                         </div>
