@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_MioLayout";
+}
+
+@model Pizza
+
+<h1 class="title mt-4 w-50 text-center">CREATE NEW PIZZA</h1>
+
+<div class="container detailpizza text-center mt-4 mb-4">
+
+    <form asp-controller="Pizza" asp-action="Create" method="post" class="text-center">
+        @Html.AntiForgeryToken()
+        <div class="mt-4 mb-4 w-50">
+            <strong>PIZZA'S NAME:</strong>
+            <input type="text" class="form-control" asp-for="Name">
+            <span asp-validation-for="Name" class="text-white"></span>
+        </div>
+        <div class="mt-4 mb-4 w-50 ">
+            <strong>PIZZA'S DESCRIPTION:</strong>
+            <input type="text" class="form-control" asp-for="Description">
+            <span asp-validation-for="Description" class="text-white"></span>
+        </div>
+        <div class="mt-4 mb-4 w-50">
+            <strong>PIZZA'S URL:</strong>
+            <input type="text" class="form-control" asp-for="Image">
+            <span asp-validation-for="Image" class="text-white"></span>
+        </div>
+
+        <div class="mt-4 mb-4 w-50">
+            <strong>PIZZA'S PRICE':</strong>
+            <input type="number" class="form-control" asp-for="Price">
+            <span asp-validation-for="Price" class="text-white"></span>
+        </div>
+        <button type="submit" class="btn btn-danger mt-4 mb-2">Create new Pizza!</button>
+    </form>
+   
+
+</div>

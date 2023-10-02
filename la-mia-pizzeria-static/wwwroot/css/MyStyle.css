@@ -74,6 +74,13 @@ table img{
         border: 10px solid black;
     }
 
+    form div{
+       color: white;
+       margin: 0 auto;
+       background-color: red;
+    }
+
+ 
 footer{
     height: 50px;
     border: 5px solid red;
