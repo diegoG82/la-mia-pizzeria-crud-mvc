@@ -34,15 +34,15 @@ namespace la_mia_pizzeria_static.Controllers
         {
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza? foundedArticle = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+                Pizza? foundedPizza = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                if (foundedArticle == null)
+                if (foundedPizza == null)
                 {
                     return NotFound($"L'articolo con {id} non è stato trovato!");
                 }
                 else
                 {
-                    return View("Details", foundedArticle);
+                    return View("Details", foundedPizza);
                 }
             }
         }
