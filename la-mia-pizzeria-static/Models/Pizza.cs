@@ -14,9 +14,9 @@ namespace la_mia_pizzeria_static.Models
         [MoreThanFive]
         public string Description { get; set; }
 
-        [Url(ErrorMessage = "You must insert a valid link")]
-        [DefaultValue("../img/default.jpg")]
-        public string Image {  get; set; }
+ 
+        [DefaultValue("/img/default.jpg")]
+        public string? Image {  get; set; }
 
         [Range(0, 100, ErrorMessage = "Invalid price")]
         public int Price { get; set; }
