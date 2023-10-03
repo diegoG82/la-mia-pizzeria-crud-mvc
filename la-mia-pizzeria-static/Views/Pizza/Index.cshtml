@@ -17,7 +17,11 @@ else{
     <main>
         <div class="text-center mt-4 mb-4">
             <a class=" btn btn-danger" href="@Url.Action("Create", "Pizza")">Create New Pizza!!!</a>
+           
         </div>
+
+      
+            
 
         <div class="container adminpizza mt-4 mb-4  ">
             <div class="row mt-2 mb-2">
@@ -31,6 +35,7 @@ else{
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +47,14 @@ else{
                                     <td>@pizza.Name</td>
                                     <td>@pizza.Description</td>
                                     <td>@pizza.Price yen</td>
+                                    <td>
+                                        <a class="btn btn-warning mt-2" href="@Url.Action("Update", "Pizza", new { id = pizza.Id})">Update Pizza!!</a>
+                                        <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                                        </form>
+                                    </td>
+                                  
                                 </tr>
                             }
                         
