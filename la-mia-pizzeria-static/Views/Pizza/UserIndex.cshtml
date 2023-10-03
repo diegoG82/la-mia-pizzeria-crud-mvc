@@ -20,7 +20,7 @@
     @section Button{
         <div class="btn_container">
 
-            <button class="btn btn-danger " onclick="showPopup()">ORDER A PIZZA!!!</button>
+            <button class="btn btn-success " onclick="showPopup()">CLICK HERE</button>
 
         </div>
 
@@ -30,17 +30,19 @@
             function showPopup() {
                 const popup = window.open("", "Popup", "width=1920,height=1080");
 
-                const img = document.createElement("img");
-                img.src = "https://www.bing.com/images/blob?bcid=RLgcGkZx-CUGqxcxoNWLuD9SqbotqVTdPzU";
-                img.style.width = "800px";
-                img.style.height = "600px";
-                img.style.position = "absolute";
-                img.style.top = "50%";
-                img.style.left = "50%";
-                img.style.transform = "translate(-50%, -50%)";
+                const text = document.createElement("div");
+                text.style.fontSize = "50px";
+                text.style.fontWeight = "bold";
+                text.style.color = "black";
+                text.style.position = "absolute";
+                text.style.top = "50%";
+                text.style.left = "50%";
+                text.style.transform = "translate(-50%, -50%)";
+                text.textContent = "ありがとうございます。";
 
-                popup.document.body.appendChild(img);
+                popup.document.body.appendChild(text);
             }
+
 
         </script>
 
@@ -65,7 +67,9 @@
                     </div>
                 </div>
             }
-            
+
+        </div>
+
     </div>
 
 
