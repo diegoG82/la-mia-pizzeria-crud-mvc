@@ -1,4 +1,5 @@
-﻿using la_mia_pizzeria_static.Database;
+﻿using la_mia_pizzeria_static.CustomLoggers;
+using la_mia_pizzeria_static.Database;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -7,24 +8,29 @@ namespace la_mia_pizzeria_static.Controllers
 {
     public class PizzaController : Controller
     {
+
+        private ICustomLogger _myLogger;
+        private PizzaContext _myDatabase;
+
+        public PizzaController(PizzaContext db, ICustomLogger logger)
+        {
+            _myLogger = logger;
+            _myDatabase = db;
+        }
+
+
         public IActionResult Index()
         {
-            using (PizzaContext db = new PizzaContext())
-            {
-                {
-                    List<Pizza> pizzas = db.Pizzas.ToList();
-                    return View("Index", pizzas);
-                }
-            }
-
-
+            _myLogger.WriteLog("You are in Pizza > Index");
+            List<Pizza> pizzas = _myDatabase.Pizzas.ToList<Pizza>();
+            return View("Index", pizzas);
         }
 
         public IActionResult UserIndex()
         {
-            using (PizzaContext db = new PizzaContext())
             {
-                List<Pizza> pizzas = db.Pizzas.ToList();
+                _myLogger.WriteLog("You are in Pizza > UserIndex");
+                List<Pizza> pizzas = _myDatabase.Pizzas.ToList<Pizza>();
                 return View("UserIndex", pizzas);
             }
         }
@@ -50,21 +56,18 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Create", newPizza);
             }
 
-            using (PizzaContext db = new PizzaContext())
-            {
-                db.Pizzas.Add(newPizza);
-                db.SaveChanges();
+            _myDatabase.Pizzas.Add(newPizza);
+            _myDatabase.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            using (PizzaContext db = new PizzaContext())
-            {
-                Pizza? pizzaToEdit = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+           
+                Pizza? pizzaToEdit = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToEdit == null)
                 {
@@ -74,7 +77,7 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     return View("Update", pizzaToEdit);
                 }
-            }
+           
         }
 
 
@@ -87,17 +90,16 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Update", modifiedPizza);
             }
 
-            using (PizzaContext db = new PizzaContext())
-            {
+          
 
-                Pizza? pizzaToUpdate = db.Pizzas.Find(id);
+                Pizza? pizzaToUpdate = _myDatabase.Pizzas.Find(id);
 
                 if (pizzaToUpdate != null)
                 {
-                    EntityEntry<Pizza> entryEntity = db.Entry(pizzaToUpdate);
+                    EntityEntry<Pizza> entryEntity = _myDatabase.Entry(pizzaToUpdate);
                     entryEntity.CurrentValues.SetValues(modifiedPizza);
 
-                    db.SaveChanges();
+                   _myDatabase.SaveChanges();
 
                     return RedirectToAction("Index");
                 }
@@ -106,16 +108,14 @@ namespace la_mia_pizzeria_static.Controllers
                     return NotFound("No pizza to modify");
                 }
 
-
-            }
-
         }
+
+
 
         public IActionResult Details(int id)
         {
-            using (PizzaContext db = new PizzaContext())
-            {
-                Pizza? foundedPizza = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+           
+                Pizza? foundedPizza = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (foundedPizza == null)
                 {
@@ -125,21 +125,20 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     return View("Details", foundedPizza);
                 }
-            }
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            using (PizzaContext db = new PizzaContext())
-            {
-              Pizza? pizzaToDelete = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+            
+                Pizza? pizzaToDelete = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToDelete != null)
                 {
-                    db.Pizzas.Remove(pizzaToDelete);
-                    db.SaveChanges();
+                    _myDatabase.Pizzas.Remove(pizzaToDelete);
+                    _myDatabase.SaveChanges();
 
                     return RedirectToAction("Index");
                 }
@@ -147,7 +146,7 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     return NotFound("Pizza to delete not found!");
                 }
-            }
+           
         }
 
 
