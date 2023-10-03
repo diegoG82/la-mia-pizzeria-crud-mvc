@@ -23,6 +23,7 @@ h1{
 }
 
 
+
 .btn_container {
     width: 150px;
     margin: 0 auto;
@@ -50,9 +51,7 @@ table img{
     border: 10px solid red;
   }
 
-.adminpizza{
-    border:5px solid black;
-}
+
     .card img {
         height: 300px;
         border:5px solid black;
@@ -81,8 +80,29 @@ table img{
        background-color: red;
     }
 
- 
-footer{
+   
+ .errorimage{
+        margin: 0 auto;
+     
+        width: 600px;
+ }
+
+    .errorpage img{
+    
+     width:100%;
+    border: 5px solid black;
+    }
+
+    .errormessage{
+        height:80px;
+        margin: 0 auto;
+        border: 5px solid black;
+        background-color:red;
+        line-height:100px;
+
+    }
+
+ footer{
     height: 50px;
     border: 5px solid red;
     margin-top:20px;

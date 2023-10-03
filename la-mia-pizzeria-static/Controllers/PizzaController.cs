@@ -35,6 +35,12 @@ namespace la_mia_pizzeria_static.Controllers
             }
         }
 
+        public IActionResult Error()
+        {
+
+            return View("Error");
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -66,18 +72,18 @@ namespace la_mia_pizzeria_static.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-           
-                Pizza? pizzaToEdit = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                if (pizzaToEdit == null)
-                {
-                    return NotFound("Pizza not founded");
-                }
-                else
-                {
-                    return View("Update", pizzaToEdit);
-                }
-           
+            Pizza? pizzaToEdit = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+            if (pizzaToEdit == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                return View("Update", pizzaToEdit);
+            }
+
         }
 
 
@@ -90,23 +96,23 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Update", modifiedPizza);
             }
 
-          
 
-                Pizza? pizzaToUpdate = _myDatabase.Pizzas.Find(id);
 
-                if (pizzaToUpdate != null)
-                {
-                    EntityEntry<Pizza> entryEntity = _myDatabase.Entry(pizzaToUpdate);
-                    entryEntity.CurrentValues.SetValues(modifiedPizza);
+            Pizza? pizzaToUpdate = _myDatabase.Pizzas.Find(id);
 
-                   _myDatabase.SaveChanges();
+            if (pizzaToUpdate != null)
+            {
+                EntityEntry<Pizza> entryEntity = _myDatabase.Entry(pizzaToUpdate);
+                entryEntity.CurrentValues.SetValues(modifiedPizza);
 
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return NotFound("No pizza to modify");
-                }
+                _myDatabase.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound("No pizza to modify");
+            }
 
         }
 
@@ -114,39 +120,39 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Details(int id)
         {
-           
-                Pizza? foundedPizza = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                if (foundedPizza == null)
-                {
-                    return NotFound($"L'articolo con {id} non è stato trovato!");
-                }
-                else
-                {
-                    return View("Details", foundedPizza);
-                }
-            
+            Pizza? foundedPizza = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+            if (foundedPizza == null)
+            {
+                return NotFound($"L'articolo con id {id} non è stato trovato!");
+            }
+            else
+            {
+                return View("Details", foundedPizza);
+            }
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            
-                Pizza? pizzaToDelete = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                if (pizzaToDelete != null)
-                {
-                    _myDatabase.Pizzas.Remove(pizzaToDelete);
-                    _myDatabase.SaveChanges();
+            Pizza? pizzaToDelete = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return NotFound("Pizza to delete not found!");
-                }
-           
+            if (pizzaToDelete != null)
+            {
+                _myDatabase.Pizzas.Remove(pizzaToDelete);
+                _myDatabase.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Error");
+            }
+
         }
 
 
