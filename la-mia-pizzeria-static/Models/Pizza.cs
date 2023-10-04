@@ -21,7 +21,13 @@ namespace la_mia_pizzeria_static.Models
         [Range(0, 100, ErrorMessage = "Invalid price")]
         public int Price { get; set; }
 
+        //Relazione 1 ad n con Category
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
+
+        //Costruttore vuoto
         public Pizza() { }
+
         public Pizza(string name, string description, string image, int price )
         {
             this.Name = name;   

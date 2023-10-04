@@ -70,3 +70,15 @@
 03-10-2023 17:42:17 LOG: You are in Pizza > UserIndex
 03-10-2023 17:44:37 LOG: You are in Pizza > UserIndex
 03-10-2023 17:46:03 LOG: You are in Pizza > UserIndex
+03-10-2023 17:55:36 LOG: You are in Pizza > UserIndex
+03-10-2023 17:55:45 LOG: You are in Pizza > Index
+03-10-2023 17:56:21 LOG: You are in Pizza > Index
+03-10-2023 18:06:38 LOG: You are in Pizza > Index
+04-10-2023 09:19:49 LOG: You are in Pizza > UserIndex
+04-10-2023 09:20:06 LOG: You are in Pizza > Index
+04-10-2023 09:20:10 LOG: You are in Pizza > Index
+04-10-2023 10:53:42 LOG: You are in Pizza > Index
+04-10-2023 10:53:56 LOG: You are in Pizza > Index
+04-10-2023 10:54:03 LOG: You are in Pizza > Index
+04-10-2023 11:12:30 LOG: You are in Pizza > UserIndex
+04-10-2023 11:28:32 LOG: You are in Pizza > Index
