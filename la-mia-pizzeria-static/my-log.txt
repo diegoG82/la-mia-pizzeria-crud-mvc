@@ -82,3 +82,9 @@
 04-10-2023 10:54:03 LOG: You are in Pizza > Index
 04-10-2023 11:12:30 LOG: You are in Pizza > UserIndex
 04-10-2023 11:28:32 LOG: You are in Pizza > Index
+04-10-2023 12:15:20 LOG: You are in Pizza > UserIndex
+04-10-2023 12:15:25 LOG: You are in Pizza > Index
+04-10-2023 12:20:07 LOG: You are in Pizza > UserIndex
+04-10-2023 12:22:37 LOG: You are in Pizza > UserIndex
+04-10-2023 12:24:13 LOG: You are in Pizza > UserIndex
+04-10-2023 12:29:05 LOG: You are in Pizza > UserIndex

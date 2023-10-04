@@ -2,6 +2,7 @@
 using la_mia_pizzeria_static.Database;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace la_mia_pizzeria_static.Controllers
@@ -41,28 +42,32 @@ namespace la_mia_pizzeria_static.Controllers
             return View("Error");
         }
 
+
         [HttpGet]
         public IActionResult Create()
         {
-            return View("Create");
+            List<Category> categories = _myDatabase.Categories.ToList();
+
+            PizzaFormModel model = new PizzaFormModel{ Pizza = new Pizza(), Categories = categories };
+
+            return View("Create", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza newPizza)
+        public IActionResult Create(PizzaFormModel data)
         {
-            if (newPizza.Image == null)
-            {
-                newPizza.Image = "/img/default.jpg";
-            }
+         
 
             if (!ModelState.IsValid)
             {
+                List<Category> categories = _myDatabase.Categories.ToList();
+                data.Categories = categories;
 
-                return View("Create", newPizza);
+                return View("Create", data);
             }
 
-            _myDatabase.Pizzas.Add(newPizza);
+            _myDatabase.Pizzas.Add(data.Pizza);
             _myDatabase.SaveChanges();
 
             return RedirectToAction("Index");
@@ -121,7 +126,7 @@ namespace la_mia_pizzeria_static.Controllers
         public IActionResult Details(int id)
         {
 
-            Pizza? foundedPizza = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+            Pizza? foundedPizza = _myDatabase.Pizzas.Where(pizza => pizza.Id == id).Include(Pizza => Pizza.Category).FirstOrDefault();
 
             if (foundedPizza == null)
             {

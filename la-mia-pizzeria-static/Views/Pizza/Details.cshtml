@@ -16,6 +16,16 @@
         <div class="title text-white w-25 mt-4 mb-4">
        
          <p>DESCRIPTION: @Model.Description</p>
+         <p>CATEGORY:
+
+             @if(Model.Category !=null){
+                <span>@Model.Category.Name</span>
+             }else{
+                <span>No category selected</span>
+             }
+         
+         </p>
+
          <p>PRICE: @Model.Price yen</p>
 
         </div>
