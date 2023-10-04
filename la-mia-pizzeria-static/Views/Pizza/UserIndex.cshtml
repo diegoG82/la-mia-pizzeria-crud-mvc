@@ -56,11 +56,11 @@
                     <div class="card mb-4">
                         <img src="@pizza.Image" alt="Pizza1" />
                         <div class="container text-center mt-4">
-
-                            <h3> <strong>@pizza.Name</strong></h3>
-                            <p> <strong>@pizza.Description</strong></p>
-                            <p> <strong>@pizza.Price yen</strong></p>
-                            <a class="btn btn-danger" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">DETAILS
+                        <h3>@pizza.Name</h3>
+                         <p>@pizza.Description</p>
+                         <p>@pizza.Category.Name</p>
+                         <p>@pizza.Price yen</p>
+                         <a class="btn btn-danger" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">DETAILS
                             </a>
 
                         </div>
