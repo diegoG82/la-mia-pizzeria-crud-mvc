@@ -33,6 +33,7 @@ else{
                                 <th scope="col">Photo</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">ingredients</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Actions</th>
@@ -46,6 +47,17 @@ else{
                                     <td><img src="@pizza.Image" alt= "image not found" /></td>
                                     <td>@pizza.Name</td>
                                     <td>@pizza.Description</td>
+                                    <td>
+                                        @if (pizza.Ingredients?.Count > 0)
+                                        {
+                                            @string.Join(", ", pizza.Ingredients.Select(i => i.Name))
+                                        }
+                                        else
+                                        {
+                                            <span>No ingredients</span>
+                                        }
+                                    </td>
+
                                     <td>@pizza.Category?.Name</td>
                                     <td>@pizza.Price yen</td>
                                     <td>

@@ -58,6 +58,16 @@
                         <div class="container text-center ">
                         <h3>@pizza.Name</h3>
                          <p>@pizza.Description</p>
+                            <p>
+                                @if (pizza.Ingredients?.Count > 0)
+                                {
+                                    @string.Join(", ", pizza.Ingredients.Select(i => i.Name))
+                                }
+                                else
+                                {
+                                    <span>No ingredients</span>
+                                }
+                            </p>
                          <p>@pizza.Category?.Name</p>
                          <p>@pizza.Price yen</p>
                          <a class="btn btn-danger mb-4" href="@Url.Action("Details", "Pizza", new { id = pizza.Id })" title="pizza details">DETAILS
