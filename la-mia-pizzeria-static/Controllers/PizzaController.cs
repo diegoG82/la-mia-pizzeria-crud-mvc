@@ -2,6 +2,7 @@
 using la_mia_pizzeria_static.Database;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -47,6 +48,7 @@ namespace la_mia_pizzeria_static.Controllers
         public IActionResult Create()
         {
             List<Category> categories = _myDatabase.Categories.ToList();
+            List<SelectListItem> allIngredientsSelectList = new List<SelectListItem>();
 
             PizzaFormModel model = new PizzaFormModel { Pizza = new Pizza(), Categories = categories };
 

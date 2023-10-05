@@ -1,4 +1,5 @@
 ﻿using la_mia_pizzeria_static.ValidationAttributes;
+using Microsoft.Identity.Client;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,7 +26,12 @@ namespace la_mia_pizzeria_static.Models
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
+        //Relazione n ad n con Ingredients
+        public List<Ingredient>? Ingredients { get; set; }  
        
+         //Costruttore vuoto
+        public Pizza() { }
+
         public Pizza(string name, string description, string image, int price)
         {
             this.Name = name;
@@ -33,9 +39,6 @@ namespace la_mia_pizzeria_static.Models
             this.Image = image;
             this.Price = price;
         }
-
-        //Costruttore vuoto
-        public Pizza() { }
 
 
     }
