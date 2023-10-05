@@ -16,6 +16,22 @@
         <div class="title text-white w-75 mt-4 mb-4">
        
          <p>DESCRIPTION: @Model.Description</p>
+
+        <p>
+          INGREDIENTS:
+
+
+            @if (Model.Ingredients != null && Model.Ingredients.Count > 0)
+            {
+                @string.Join(", ", Model.Ingredients.Select(i => i.Name))
+            }
+            else
+            {
+                <span> No ingredients!!! I am a Cloud!!!</span>
+            }
+        </p>
+
+
          <p>CATEGORY:
 
              @if(Model.Category !=null){
