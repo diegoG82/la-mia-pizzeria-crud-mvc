@@ -2,26 +2,25 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Log in Your Account";
 }
 
 
-<div class="container title ">
+<div class="container title">
 
-    <h1 class="text-center">@ViewData["Title"]</h1>
+    <h1 class="text-center mt-4 mb-4">@ViewData["Title"]</h1>
     <div class="row">
         <div class="col-md-4">
             <section>
                 <form id="account" class="accountform" method="post">
-                    <h3>Use a local account to log in.</h3>
-                    <hr />
+              
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-floating">
+                    <div class="form-floating mt-2 mb-2">
                         <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                         <label asp-for="Input.Email" class="form-label"></label>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating  mt-2 mb-2">
                         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                         <label asp-for="Input.Password" class="form-label"></label>
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -35,9 +34,9 @@
                         </div>
                     </div>
                     <div>
-                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-success">Log in</button>
                     </div>
-                    <div>
+                    <div class="mt-4">
                         <p>
                             <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                         </p>
