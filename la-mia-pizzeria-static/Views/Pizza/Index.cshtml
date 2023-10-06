@@ -16,10 +16,14 @@ else{
     <div class="title"> <h1 class="text-center mt-2 mb-4">WELCOME TO KAWAII PIZZA ADMIN PAGE</h1></div>
    
     <main>
-        <div class=" text-center mt-4 mb-4 W">
-            <a class=" btn btn-success " href="@Url.Action("Create", "Pizza")">Create new Pizza</a>
-           
-        </div>
+
+        @if (User.IsInRole("ADMIN"))
+        {
+            <div class=" text-center mt-4 mb-4 W">
+                <a class=" btn btn-success " href="@Url.Action("Create", "Pizza")">Create new Pizza</a>
+            </div>
+        }
+      
 
       
            <div class="container mt-4 mb-4  ">
