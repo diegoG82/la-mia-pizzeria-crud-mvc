@@ -36,7 +36,11 @@ else{
                                 <th scope="col">Ingredients</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Actions</th>
+
+                                @if (User.IsInRole("ADMIN"))
+                                {
+                                    <th scope="col">Actions</th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -60,13 +64,25 @@ else{
 
                                     <td>@pizza.Category?.Name</td>
                                     <td>@pizza.Price yen</td>
-                                    <td>
-                                        <a class="btn btn-warning mt-2" href="@Url.Action("Update", "Pizza", new { id = pizza.Id})">Update</a>
-                                        <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
-                                        </form>
-                                    </td>
+
+                                    @if (User.IsInRole("ADMIN"))
+                                    {
+                                        <td>
+                                            <a class="btn btn-warning mt-2" href="@Url.Action("Update", "Pizza", new { id = pizza.Id})">Update</a>
+                                            <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                                            </form>
+                                        </td>
+                                    }
+
+
+
+
+
+
+
+
                                   
                                 </tr>
                             }
@@ -80,6 +96,8 @@ else{
         </div>
 
     </main>
+
+
 
 
 }
